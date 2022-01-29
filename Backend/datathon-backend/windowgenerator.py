@@ -30,18 +30,21 @@ class WindowGenerator():
         self.total_window_size = input_width + shift
 
         self.input_slice = slice(0, input_width)
-        self.input_indices = np.arange(self.total_window_size)[self.input_slice]
+        self.input_indices = np.arange(self.total_window_size)[
+            self.input_slice]
 
         self.label_start = self.total_window_size - self.label_width
         self.labels_slice = slice(self.label_start, None)
-        self.label_indices = np.arange(self.total_window_size)[self.labels_slice]
+        self.label_indices = np.arange(self.total_window_size)[
+            self.labels_slice]
 
     def split_window(self, features):
         inputs = features[:, self.input_slice, :]
         labels = features[:, self.labels_slice, :]
         if self.label_columns is not None:
             labels = tf.stack(
-                [labels[:, :, self.column_indices[name]] for name in self.label_columns],
+                [labels[:, :, self.column_indices[name]]
+                    for name in self.label_columns],
                 axis=-1)
 
         # Slicing doesn't preserve static shape information, so set the shapes

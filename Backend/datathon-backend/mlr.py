@@ -16,11 +16,12 @@ print(start_df.head())
 
 model = LR()
 
-slope, intercept, x, fittedline = fa.timeseriesLinearRegression(start_df["DateTime"], start_df["WSPD"])
+slope, intercept, x, fittedline = fa.timeseriesLinearRegression(
+    start_df["DateTime"], start_df["WSPD"])
 
 
-## Make graph of the results
-fig = plt.figure(figsize=(12, 7)) # make canvas of picture
+# Make graph of the results
+fig = plt.figure(figsize=(12, 7))  # make canvas of picture
 plt.plot(start_df["DateTime"], start_df["WSPD"], label="original")
 plt.plot(start_df["DateTime"], fittedline, label="prediction")
 plt.grid()
@@ -28,7 +29,7 @@ plt.xlabel("Date")
 plt.ylabel("WindSpeed")
 plt.suptitle("Timeseries of WSPD for Station " + STATION)
 plt.legend(loc="best")
-fig.savefig("simple_LR.png") # save as image
+fig.savefig("simple_LR.png")  # save as image
 
 x = start_df[["ATMP", "DEWP", "VIS", "GSTD", "TIME"]]
 y = start_df["WX"]
