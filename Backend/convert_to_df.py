@@ -14,7 +14,7 @@ def convert_txt_to_df(station: str):
         second_split_lines.append(line.split())
     df = pd.DataFrame(second_split_lines)
     df = df.rename(columns=df.iloc[0])
-    df = df.drop([1, 0])
+    df = df.drop([len(df)-1,1, 0])
     return df
 
 def pd_to_csv(station: str):
