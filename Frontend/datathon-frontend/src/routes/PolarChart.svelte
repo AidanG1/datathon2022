@@ -1,15 +1,16 @@
 <script>
 	import { onMount } from 'svelte';
 	export let station, polar_date;
+    const fmt_polar = `${polar_date.getFullYear()}-${polar_date.getMonth()}-${polar_date.getDay()}`;
 	let theta = [];
+	let r = [];
 	let error = '';
 	var data = [
 		{
 			type: 'scatterpolar',
 
 			name: 'radial categories',
-
-			theta: theta,
+			r: r,
 
 			thetaunit: 'radians',
 
@@ -20,32 +21,29 @@
 	];
 
 	var layout = {
+        title: `Wind Speed of ${station} on ${fmt_polar}`,
+        width: 500,
+        height: 350,
 		polar: {
-			domain: {
-				x: [0.54, 1],
-
-				y: [0, 0.44]
-			},
-
 			angularaxis: {
 				thetaunit: 'degrees',
-
 				dtick: 1
 			}
 		}
 	};
 	onMount(() => {
-		const fmt_polar = `${polar_date.getFullYear()}-${polar_date.getMonth()}-${polar_date.getDay()}`;
+		
 		async function fetch_data() {
 			let response = await fetch(`https://dtbe.deta.dev/p/${station}/${fmt_polar}`);
 
 			if (response.ok) {
 				let json = await response.json();
 				for (let point of json.data) {
-					theta.push(point['wspd']);
+					theta.push(point['wdir']);
+					r.push(point['wspd']);
 				}
 				let polarDiv = document.getElementById('polarDiv');
-                console.log(data)
+				console.log(data);
 				let Plot = new Plotly.newPlot(polarDiv, data, layout);
 				return json.data;
 			} else {

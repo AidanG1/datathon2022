@@ -3,11 +3,11 @@ from flask import Flask, request, jsonify
 import convert_to_df
 # import mlr2
 import datetime
+import tf
 from deta import Deta
 import numpy as np
 from flask_cors import CORS, cross_origin
 
-# deta = Deta(os.getenv('DETA_PROJECT_KEY'))
 app = Flask(__name__)
 cors = CORS(app)
 
@@ -48,6 +48,12 @@ def get_polar(station, date):
     data_dict = {'data': data_list}
     # print(data_dict)
     return jsonify(data_dict)
+
+@app.route('/pred/<station>', methods=['GET'])
+@cross_origin()
+def get_predictions(station):
+    data = tf.get_data(station)
+    return jsonify({'data': data})
 
 
 # @app.route("/mlr2/<station>", methods=["GET"])

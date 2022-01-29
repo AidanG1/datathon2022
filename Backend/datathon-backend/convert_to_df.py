@@ -23,6 +23,10 @@ def convert_txt_to_df(station: str):
     for line in lines:
         second_split_lines.append(line.split())
     df = pd.DataFrame(second_split_lines)
+    num = 4000
+    if len(df) < num:
+        num = len(df)
+    df = df[:num]
     df = df.rename(columns=df.iloc[0])
     df = df.drop([len(df)-1, 1, 0])
 
