@@ -45,3 +45,8 @@ For wind direction, we repurposed our already-written Markov chain to give a pre
 https://www.ndbc.noaa.gov/
 
 https://www.tensorflow.org/tutorials/structured_data/time_series
+
+Colab link running project : https://colab.research.google.com/drive/1-ocY5TOAvqVGfvS2pJiQYma6IBsST9zN#scrollTo=gl36zBdPpfIY
+https://www.tensorflow.org/guide/keras/rnn
+https://www.tensorflow.org/tfx/tutorials/serving/rest_simple
+https://towardsdatascience.com/quickly-share-ml-webapps-from-google-colab-using-ngrok-for-free-ae899ca2661a
