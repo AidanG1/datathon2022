@@ -9,10 +9,9 @@ def get_txt(station: str):
 def convert_txt_to_pd(station: str):
     txt = get_txt(station)
     lines = txt.split('\n')
-    with open('data.txt','w') as data:
-        for line in lines:
-            data.write(str(line.split()))
-        data.close()
-    return pd.DataFrame(lines)
+    second_split_lines = []
+    for line in lines:
+        second_split_lines.append(line.split())
+    return pd.DataFrame(second_split_lines)
 
 print(convert_txt_to_pd('KBQX'))
