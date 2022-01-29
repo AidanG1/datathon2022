@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 import numpy as np
-from wv import wind_vector
+from wv import wind_vector, lstm_clean
 
 
 def get_txt(station: str):
@@ -31,12 +31,18 @@ def convert_txt_to_df(station: str):
     for col in ["#YY", "MM", "DD", "hh", "mm"]:
         new_df[col] = df[col].apply(int)
 
-    wind_vector(new_df)
+    new_df = new_df.rename(columns={'#YY': "year", 'MM': 'month', "DD":"day", "hh":"hour", "mm":"minute"})
+    df_datetime = new_df[['year', 'month', 'day', 'hour', 'minute']]
+    df_datetime = pd.to_datetime(df_datetime)
+    new_df.insert(0, 'DateTime', df_datetime, allow_duplicates=True)
+    #lstm_clean(new_df)
+
+    #wind_vector(new_df)
     return new_df
 
 
 def pd_to_csv(station: str):
     convert_txt_to_df(station).to_csv(f'{station}.csv')
 
-
-# pd_to_csv('kbqx')
+# print(convert_txt_to_df('kbqx'))
+#pd_to_csv('kbqx')

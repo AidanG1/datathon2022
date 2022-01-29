@@ -1,6 +1,6 @@
 <script>
 	import Chart from 'svelte-frappe-charts';
-  
+	
 	let data = {
 	  labels: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'],
 	  datasets: [
