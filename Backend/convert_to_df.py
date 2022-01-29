@@ -14,4 +14,7 @@ def convert_txt_to_df(station: str):
         second_split_lines.append(line.split())
     return pd.DataFrame(second_split_lines)
 
+def pd_to_csv(station: str):
+    convert_txt_to_df(station).to_csv(f'{station}.csv')
+
 # print(convert_txt_to_df('KBQX'))
