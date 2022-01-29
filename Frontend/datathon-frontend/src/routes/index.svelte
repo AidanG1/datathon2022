@@ -9,7 +9,7 @@
 	let start_time = new Date();
 	let end_time = new Date();
 	let end_date = new Date();
-	let station = 'NCHT2'
+	let station = 'NCHT2';
 	let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 	let values = [18, 40, 30, 35, 8, 52, 17, -4];
 	let data = {
@@ -49,9 +49,11 @@
 		};
 	}
 	function data_change(json_data) {
+		old_station = station;
 		setTimeout(function () {
-			if ()
-			change_labels_values(start_date, end_date, start_time, end_time);
+			if (station != old_station) {
+				change_labels_values(start_date, end_date, start_time, end_time);
+			}
 		}, 2000);
 	}
 	$: data_change(json_data);
