@@ -3,3 +3,5 @@ flask
 requests
 numpy
 pandas
+matplotlib
+linear-tree
