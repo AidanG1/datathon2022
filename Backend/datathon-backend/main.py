@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import convert_to_df
-import mlr2
+# import mlr2
 import datetime
 from deta import Deta
 import numpy as np

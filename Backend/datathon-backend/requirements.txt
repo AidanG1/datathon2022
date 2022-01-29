@@ -4,7 +4,6 @@ requests
 numpy
 pandas
 flask-cors
+pmdarima
 matplotlib
 linear-tree
-pmdarima
-scikit-learn
