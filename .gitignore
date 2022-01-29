@@ -1,4 +1,6 @@
 backend/*.csv
+backend/__pycache__
+backend/datathon-backend/__pycache__
 backend/datathon-backend/.deta
 backend/datathon-backend/.env
 frontend/datathon-frontend/.DS_Store
