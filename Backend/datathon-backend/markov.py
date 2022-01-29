@@ -5,12 +5,9 @@ import numpy as np
 
 def markov_data(station: str):
     data = convert_to_df.convert_txt_to_df(station).WSPD.to_list()
-    data = [i for i in data if i != np.NaN]
-    data.reverse()
-    max_speed = float(max(data))
+    max_speed = max(data)
     for point in data:
-        if point != np.NaN:
-            point = round(10 * point / max_speed)
+        point = round(10 * point / max_speed)
     return data
 
 
