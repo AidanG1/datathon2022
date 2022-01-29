@@ -28,7 +28,7 @@ def lstm_clean(df):
 
     gst = df["GST"].fillna(df["WSPD"]);
     df["GSTD"] = gst - df["WSPD"];
-    df["TIME"] = np.cos((df["hh"] + df["mm"] / 60) / 24 * 2 * math.pi)
+    df["TIME"] = np.cos((df["hour"] + df["minute"] / 60) / 24 * 2 * math.pi)
 
     # drop some columns
     df.dropna(axis=1, inplace=True)
