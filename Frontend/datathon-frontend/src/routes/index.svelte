@@ -9,7 +9,7 @@
 	let start_time = new Date();
 	let end_time = new Date();
 	let end_date = new Date();
-	let station = 'NCHT2';
+	let station = 'KBQX';
 	let old_station = '';
 	let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 	let values = [18, 40, 30, 35, 8, 52, 17, -4];
@@ -76,7 +76,7 @@
 		}
 	}
 </script>
-
+<img src="/logoslogan.png">
 {#await fetch_data(`https://dtbe.deta.dev/s/${station}`)}
 	<h1>Loading <Loading /></h1>
 {:then}
