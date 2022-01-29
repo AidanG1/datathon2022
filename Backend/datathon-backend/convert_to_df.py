@@ -35,9 +35,10 @@ def convert_txt_to_df(station: str):
     df_datetime = new_df[['year', 'month', 'day', 'hour', 'minute']]
     df_datetime = pd.to_datetime(df_datetime)
     new_df.insert(0, 'DateTime', df_datetime, allow_duplicates=True)
-    #lstm_clean(new_df)
 
-    #wind_vector(new_df)
+    lstm_clean(new_df)
+    wind_vector(new_df)
+    
     return new_df
 
 

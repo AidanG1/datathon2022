@@ -3,16 +3,16 @@ from convert_to_df import convert_txt_to_df
 import financialanalysis as fa
 from matplotlib import pyplot as plt
 
-start_df = convert_txt_to_df("KIKT")
-features = start_df[["GST", "VIS"]]
+start_df = convert_txt_to_df("KMIS")
+features = start_df[["GSTD", "VIS"]]
 
 # start_df["datetime_str"] = start_df.apply(lambda row: row["#YY"] + row["MM"], axis=1)
 
-print(start_df.tail())
+print(start_df.head())
 
 model = LR()
 
-# slope, intercept, x, fittedline = fa.timeseriesLinearRegression(start_df["datetime"], start_df["relative_price_change_CTtoBS"])
+slope, intercept, x, fittedline = fa.timeseriesLinearRegression(start_df["DateTime"], start_df["WSPD"])
 
 
 # ## Make graph of the results
