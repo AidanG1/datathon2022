@@ -3,8 +3,10 @@
 import json
 import requests
 import numpy
+import convert_to_df
 
-def get_data(input_frame):
+def get_data(station: str):
+    input_frame = convert_to_df.convert_txt_to_df(station)
     data = json.dumps({"signature_name": "serving_default", "instances": input_frame.tolist()})
     #print('Data: {} ... {}'.format(data[:50], data[len(data) - 52:]))
     #print(window.example[0].shape)
