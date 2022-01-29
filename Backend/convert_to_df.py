@@ -3,15 +3,18 @@ import pandas as pd
 import numpy as np
 from wv import wind_vector
 
+
 def get_txt(station: str):
-    r = requests.get(f'https://www.ndbc.noaa.gov/data/realtime2/{station.upper()}.txt').text
+    r = requests.get(
+        f'https://www.ndbc.noaa.gov/data/realtime2/{station.upper()}.txt').text
     return r
+
 
 def clean_data(element):
     if element == "MM":
         return np.NaN
-    
     return float(element)
+
 
 def convert_txt_to_df(station: str):
     txt = get_txt(station)
@@ -31,7 +34,9 @@ def convert_txt_to_df(station: str):
     wind_vector(new_df)
     return new_df
 
+
 def pd_to_csv(station: str):
     convert_txt_to_df(station).to_csv(f'{station}.csv')
+
 
 pd_to_csv('kbqx')
