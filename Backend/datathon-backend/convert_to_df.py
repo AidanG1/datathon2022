@@ -39,7 +39,7 @@ def convert_txt_to_df(station: str):
     lstm_clean(new_df)
     wind_vector(new_df)
     
-    return new_df
+    return new_df.iloc[::-1]
 
 
 def pd_to_csv(station: str):
