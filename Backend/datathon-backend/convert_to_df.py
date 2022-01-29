@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 import numpy as np
-from wv import wind_vector
+from wv import wind_vector,lstm_clean
 
 
 def get_txt(station: str):
@@ -30,8 +30,10 @@ def convert_txt_to_df(station: str):
 
     for col in ["#YY", "MM", "DD", "hh", "mm"]:
         new_df[col] = df[col].apply(int)
+    lstm_clean(new_df)
 
     wind_vector(new_df)
+
     return new_df
 
 
