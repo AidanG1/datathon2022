@@ -1,6 +1,6 @@
 <script>
 	import Chart from 'svelte-frappe-charts';
-	import { DatePicker, Loading, TimePicker } from 'attractions';
+	import { DatePicker, Loading, TimePicker, TextField } from 'attractions';
 	let chartRef;
 	let json_data = [];
 	let full_labels = [];
@@ -9,6 +9,7 @@
 	let start_time = new Date();
 	let end_time = new Date();
 	let end_date = new Date();
+	let station = 'NCHT2'
 	let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 	let values = [18, 40, 30, 35, 8, 52, 17, -4];
 	let data = {
@@ -20,9 +21,9 @@
 		]
 	};
 	function change_labels_values(start_date, end_date, start_time, end_time) {
-		start_date.setHours(start_time.getHours())
+		start_date.setHours(start_time.getHours());
 		start_date.setMinutes(start_time.getMinutes());
-		end_date.setHours(end_time.getHours())
+		end_date.setHours(end_time.getHours());
 		end_date.setMinutes(end_time.getMinutes());
 		if (start_date > end_date) {
 			[start_date, end_date] = [end_date, start_date];
@@ -47,6 +48,13 @@
 			]
 		};
 	}
+	function data_change(json_data) {
+		setTimeout(function () {
+			if ()
+			change_labels_values(start_date, end_date, start_time, end_time);
+		}, 2000);
+	}
+	$: data_change(json_data);
 	$: change_labels_values(start_date, end_date, start_time, end_time);
 
 	async function fetch_data(url) {
@@ -66,7 +74,7 @@
 	}
 </script>
 
-{#await fetch_data('https://dtbe.deta.dev/s/kbqx')}
+{#await fetch_data(`https://dtbe.deta.dev/s/${station}`)}
 	<h1>Loading <Loading /></h1>
 {:then}
 	<h3>Start Date</h3>
@@ -75,5 +83,5 @@
 	<h3>End Date</h3>
 	<DatePicker format="%m/%d/%Y" closeOnSelection bind:value={end_date} />
 	<TimePicker hideNow bind:value={end_time} />
-	<Chart {data} type="line" bind:this={chartRef} title="Wind Speed"/>
+	<Chart {data} type="line" bind:this={chartRef} title="Wind Speed" />
 {/await}
