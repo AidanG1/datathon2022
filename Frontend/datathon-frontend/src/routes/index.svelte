@@ -116,11 +116,8 @@
 				bind:this={chartRef}
 				title="Wind Speed"
 				axisOptions={{ xIsSeries: true }}
-				colors="black"
 			/>
 		{/await}
-	</div>
-	<div class="span-col-4">
 		<TFPrediction {station} />
 	</div>
 </div>
@@ -146,7 +143,7 @@
 		display: inline-block;
 	}
 	:global(body) {
-		background-color: lightseagreen;
+		background-color: rgb(238, 237, 180);
 		background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpaperaccess.com%2Fwhite-light&psig=AOvVaw38qXHOzh5iaI5dTl6JJggt&ust=1643578529901000&source=images&cd=vfe&ved=0CAgQjRxqFwoTCIiQ86X11_UCFQAAAAAdAAAAABAJ');
 	}
 </style>

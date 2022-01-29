@@ -49,10 +49,10 @@
 
 <div class="container">
 	<div class="Chart">
-		{#await fetch_data(`https://dtbe.deta.dev/pred/${station}`)}
+		{#await fetch_data(`https://dtbe.deta.dev/tf/${station}`)}
 			<h1>Loading <Loading /></h1>
 		{:then}
-			<Chart {data} type="line" bind:this={chartRef} title="Wind Direction Prediction"
+			<Chart {data} type="line" bind:this={chartRef} title="Wind Speed Prediction"
 			axisOptions={{ xIsSeries: true }} />
 		{/await}
 	</div>
