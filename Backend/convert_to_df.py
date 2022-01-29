@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import numpy as np
+from wv import wind_vector
 
 def get_txt(station: str):
     r = requests.get(f'https://www.ndbc.noaa.gov/data/realtime2/{station.upper()}.txt').text
@@ -20,13 +21,14 @@ def convert_txt_to_df(station: str):
         second_split_lines.append(line.split())
     df = pd.DataFrame(second_split_lines)
     df = df.rename(columns=df.iloc[0])
-    df = df.drop([len(df)-1,1, 0])
+    df = df.drop([len(df)-1, 1, 0])
 
     new_df = df.applymap(clean_data)
 
     for col in ["#YY", "MM", "DD", "hh", "mm"]:
         new_df[col] = df[col].apply(int)
 
+    wind_vector(new_df)
     return new_df
 
 def pd_to_csv(station: str):
