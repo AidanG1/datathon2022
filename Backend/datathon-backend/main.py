@@ -1,9 +1,7 @@
-from posixpath import split
 from flask import Flask, request, jsonify
 import convert_to_df
-# import mlr2
 import datetime
-import tf
+import tf, markov
 from deta import Deta
 import numpy as np
 from flask_cors import CORS, cross_origin
@@ -36,9 +34,9 @@ def get_polar(station, date):
     df = df.set_index('DateTime')
     split_date = date.split('-')
     start_date = datetime.datetime(
-        int(split_date[0]), int(split_date[1])+1, int(split_date[2]), 0)
+        int(split_date[0]), int(split_date[1]), int(split_date[2]), 0)
     end_date = datetime.datetime(
-        int(split_date[0]), int(split_date[1])+1, int(split_date[2]), 23)
+        int(split_date[0]), int(split_date[1]), int(split_date[2]), 23)
     df = df.loc[start_date:end_date]
     df = df.reset_index()
     data_list = []
@@ -52,8 +50,9 @@ def get_polar(station, date):
 @app.route('/pred/<station>', methods=['GET'])
 @cross_origin()
 def get_predictions(station):
-    data = tf.get_data(station)
-    return jsonify({'data': data})
+    df = convert_to_df.convert_txt_to_df(station)['wdir'][:-14].to_list()
+    data_list = markov.predict(72, df)
+    return jsonify({'data': data_list})
 
 
 # @app.route("/mlr2/<station>", methods=["GET"])

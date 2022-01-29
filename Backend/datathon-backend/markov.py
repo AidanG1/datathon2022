@@ -60,7 +60,7 @@ def weighted_choice(sl, model):
         return weights.keys()[-1]
 
 
-def create_markov(data: list, order):
+def create_markov(data: list, order: int):
     markov = {}
     for index in range(len(data)-order-1):
         dt_tuple = tuple(data[index:index+order])
@@ -99,9 +99,15 @@ def create_markov(data: list, order):
 #                 break
 #     return results
 
-def predict(last):
-    data = tuple(last)
-    return weighted_choice(data, final_model)
+def predict(num_to_predict: int, last: list):
+    predictions = []
+    for i in num_to_predict:
+        data = tuple(last)
+        pred = weighted_choice(data, final_model)
+        predictions.append(pred)
+        last = last[1:]
+        last.append(pred)
+    return predictions
 
 # for j in range(1,40):
 #     data = markov_data('VCAT2', j)
