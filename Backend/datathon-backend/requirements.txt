@@ -6,3 +6,4 @@ pandas
 flask-cors
 matplotlib
 linear-tree
+pmdarima

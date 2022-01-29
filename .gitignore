@@ -1,7 +1,9 @@
 backend/*.csv
 backend/__pycache__
 backend/datathon-backend/__pycache__
+backend/datathon-backend/.ipynb_checkpoints
 backend/datathon-backend/.deta
+backend/datathon-backend/*.ipynb
 backend/datathon-backend/.env
 frontend/datathon-frontend/.DS_Store
 frontend/datathon-frontend/node_modules
