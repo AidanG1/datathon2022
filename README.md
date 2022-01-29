@@ -4,17 +4,17 @@
 ### Created by Aidan Gerber, Noah Spector, Sai Mettupalli, and Jacob Kasner
 
 # Table of Contents 📕
-1. [Objectives](README.md#Objectives)
-2. [Cleaning](README.md#Cleaning)
-3. [Modeling](README.md#Modeling)
-4. [Techstack](README.md#Techstack)
-5. [Citations](README.md#Citations)
+1. [Objectives](README.md#objectives-)
+2. [Cleaning](README.md#cleaning-)
+3. [Modeling](README.md#modeling-%EF%B8%8F)
+4. [Techstack](README.md#techstack-)
+5. [Citations](README.md#citations-)
 
 ## Objectives 🧠
 
 Breezee seeks to establish predictions for 72 hours into the future regarding "any way the wind blows," and how fast. We leverage the National Data Buoy Center's network of sensors to obtain data from the past 45 days, then display it in our dashboard alongside the future prediction model trained using the historical data.
 
-## Cleaning
+## Cleaning 🧼
 
 The datasets for each individual station presented themselves as text files on the National Oceanographic and Atmospheric Association's website. We developed a pipeline to request the text file given the station name and parse it into a pandas DataFrame.
 
