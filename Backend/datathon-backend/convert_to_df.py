@@ -31,7 +31,7 @@ def convert_txt_to_df(station: str):
     for col in ["#YY", "MM", "DD", "hh", "mm"]:
         new_df[col] = df[col].apply(int)
 
-    new_df = df.rename(columns={'#YY': "year", 'MM': 'month', "DD":"day", "hh":"hour", "mm":"minute"})
+    new_df = new_df.rename(columns={'#YY': "year", 'MM': 'month', "DD":"day", "hh":"hour", "mm":"minute"})
     df_datetime = new_df[['year', 'month', 'day', 'hour', 'minute']]
     df_datetime = pd.to_datetime(df_datetime)
     new_df.insert(0, 'DateTime', df_datetime, allow_duplicates=True)
