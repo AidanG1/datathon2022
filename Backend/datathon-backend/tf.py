@@ -23,4 +23,4 @@ def get_data(station: str):
     return [thing[0][i][0] * wstd + wmean for i in range(72)]
     #return jsonify({'Success!': 'Yay'})
 
-print(get_data(numpy.zeros((1,72,6))))
+#print(get_data(numpy.zeros((1,72,6))))
