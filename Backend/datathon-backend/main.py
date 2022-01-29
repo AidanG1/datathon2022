@@ -54,6 +54,12 @@ def get_predictions(station):
     data_list = markov.predict(72, df)
     return jsonify({'data': data_list})
 
+@app.route('/tf/<station>', methods=['GET'])
+@cross_origin()
+def get_speed_predictions(station):
+    data = tf.get_data(station)
+    return jsonify({'data': data})
+
 
 # @app.route("/mlr2/<station>", methods=["GET"])
 # @cross_origin()
