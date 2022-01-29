@@ -9,7 +9,7 @@
 	let start_time = new Date();
 	let end_time = new Date();
 	let end_date = new Date();
-	let station = 'NCHT2';
+	let station = 'KBQX';
 	let old_station = '';
 	let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 	let values = [18, 40, 30, 35, 8, 52, 17, -4];
