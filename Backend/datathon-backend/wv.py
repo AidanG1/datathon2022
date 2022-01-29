@@ -32,4 +32,4 @@ def lstm_clean(df):
 
     # drop some columns
     df.dropna(axis=1, inplace=True)
-    df.drop(columns=["hh", "mm", "#YY", "MM", "DD"], inplace=True)
+    df.drop(columns=["hour", "minute", "year", "month", "day"], inplace=True)
