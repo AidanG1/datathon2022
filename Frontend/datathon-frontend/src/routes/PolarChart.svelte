@@ -21,7 +21,7 @@
 	];
 
 	var layout = {
-		title: `Wind Speed of ${station} on ${fmt_polar}`,
+		title: `Wind Vector of ${station} over ${fmt_polar}`,
 		width: 500,
 		height: 350,
 		polar: {
@@ -48,7 +48,7 @@
 					theta.push(point['wdir']);
 					r.push(point['wspd']);
 				}
-                layout.title = `Wind Speed of ${station} on ${fmt_polar}`
+                layout.title = `Wind Vector of ${station} over ${fmt_polar}`
 				let Plot = new Plotly.newPlot(polarDiv, data, layout);
 				return json.data;
 			} else {
