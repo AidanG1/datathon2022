@@ -22,8 +22,10 @@
 
 	var layout = {
 		title: `Wind Vector of ${station} over ${fmt_polar}`,
-		width: 500,
+		width: 350,
 		height: 350,
+        paper_bgcolor: 'transparent',
+        plot_bgcolor: 'transparent',
 		polar: {
 			angularaxis: {
 				thetaunit: 'degrees',

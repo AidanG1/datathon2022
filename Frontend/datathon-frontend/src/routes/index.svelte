@@ -2,7 +2,8 @@
 	import Chart from 'svelte-frappe-charts';
 	import { DatePicker, Loading, TimePicker, Button, Label } from 'attractions';
 	import PolarChart from './PolarChart.svelte';
-	import WindPrediction from './WindPrediction.svelte'
+	import WindPrediction from './WindPrediction.svelte';
+	import TFPrediction from './TFPrediction.svelte';
 	let chartRef;
 	let json_data = [];
 	let full_labels = [];
@@ -74,21 +75,8 @@
 	}
 </script>
 
-<div class="container">
-	<div class="Chart">
-		{#await fetch_data(`https://dtbe.deta.dev/s/${station}`)}
-			<h1>Loading <Loading /></h1>
-		{:then}
-			<Chart
-				{data}
-				type="line"
-				bind:this={chartRef}
-				title="Wind Speed"
-				axisOptions={{ xIsSeries: true }}
-			/>
-		{/await}
-	</div>
-	<div class="Controls">
+<div class="grid">
+	<div>
 		<img src="/logo.png" width="100" alt="Logo" />
 		<div>
 			<Label for="start_date">Start Date</Label>
@@ -114,34 +102,51 @@
 			{/each}
 		</div>
 	</div>
-	<div class="Polar">
+	<div class="span-col-3">
 		<PolarChart {station} polar_date={start_date} />
 		<WindPrediction {station} />
+	</div>
+	<div class="span-col-4">
+		{#await fetch_data(`https://dtbe.deta.dev/s/${station}`)}
+			<h1>Loading <Loading /></h1>
+		{:then}
+			<Chart
+				{data}
+				type="line"
+				bind:this={chartRef}
+				title="Wind Speed"
+				axisOptions={{ xIsSeries: true }}
+				colors="black"
+			/>
+		{/await}
+	</div>
+	<div class="span-col-4">
+		<TFPrediction {station} />
 	</div>
 </div>
 
 <style>
-	.container {
+	.grid {
 		display: grid;
-		grid-template-columns: 0.1fr 1.9fr 1fr;
-		grid-template-rows: 1fr 1.9fr 0.1fr;
-		gap: 0px 0px;
-		grid-template-areas:
-			'. Controls Polar'
-			'. Chart Chart'
-			'. . .';
+		grid-template-columns: repeat(4, 1fr);
+		grid-gap: 10px;
 	}
-	.Chart {
-		width: 100%;
-		grid-area: Chart;
+	.span-col-4 {
+		grid-column: span 4 / auto;
 	}
-	.Controls {
-		grid-area: Controls;
+
+	.span-col-3 {
+		grid-column: span 3 / auto;
 	}
-	.Polar {
-		grid-area: Polar;
+	.span-col-2 {
+		grid-column: span 2 / auto;
 	}
+
 	img {
 		display: inline-block;
+	}
+	:global(body) {
+		background-color: lightseagreen;
+		background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpaperaccess.com%2Fwhite-light&psig=AOvVaw38qXHOzh5iaI5dTl6JJggt&ust=1643578529901000&source=images&cd=vfe&ved=0CAgQjRxqFwoTCIiQ86X11_UCFQAAAAAdAAAAABAJ');
 	}
 </style>
