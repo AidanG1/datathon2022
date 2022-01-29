@@ -9,21 +9,36 @@ def markov_data(station: str, order):
     processed = [i//45 for i in data]
     data = processed
     model = create_markov(processed, order)
-
-    #test the model
-    ctr = 0
-    sss=0
-    for i in range(7000, len(data)-1):
-        sss+=1
-        sl = tuple(data[i-order:i])
-
-        prediction = weighted_choice(sl, model)
-        actual = data[i]
-        #print(tuple(data[i-order:i]), ": predicted " ,prediction, ", actual ", actual)
-        error = min(abs(prediction-actual), abs(8-(prediction-actual)))
-        ctr += error**2
-    #print("mse: " + str( ctr / (sss)))
-
+    return model
+    # #test the model
+    # ctr = 0
+    # sss=0
+    # for i in range(7000, len(data)-1):
+    #     sss+=1
+    #     sl = tuple(data[i-order:i])
+    #
+    #     prediction = weighted_choice(sl, model)
+    #     actual = data[i]
+    #     #print(tuple(data[i-order:i]), ": predicted " ,prediction, ", actual ", actual)
+    #     error = min(abs(prediction-actual), abs(8-(prediction-actual)))
+    #     ctr += error**2
+    # #print("mse: " + str( ctr / (sss)))
+    #
+    # testdata = convert_to_df.convert_txt_to_df("fmoa1")["WDIR"].to_list()
+    # processed = [i//45 for i in testdata]
+    # data = processed
+    # #test the model
+    # ctr = 0
+    # sss=0
+    # for i in range(7000, len(data)-1):
+    #     sss+=1
+    #     sl = tuple(data[i-order:i])
+    #     prediction = weighted_choice(sl, model)
+    #     actual = data[i]
+    #     #print(tuple(data[i-order:i]), ": predicted " ,prediction, ", actual ", actual)
+    #     error = min(abs(prediction-actual), abs(8-(prediction-actual)))
+    #     ctr += error**2
+    # #print( ctr / (sss))
 
 
 def weighted_choice(sl, model):
