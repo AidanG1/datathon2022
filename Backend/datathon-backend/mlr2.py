@@ -1,8 +1,8 @@
-from sklearn.model_selection import train_test_split
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
+# from sklearn.model_selection import train_test_split
+# import pandas as pd
+# import numpy as np
+# import matplotlib.pyplot as plt
+# from sklearn.linear_model import LinearRegression
 
 # def mlr2(df: pd.DataFrame):
 #     df['SMA60'] = df['WSPD'].rolling(60).mean().shift(1)

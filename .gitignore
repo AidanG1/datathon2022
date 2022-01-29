@@ -1,5 +1,6 @@
 backend/*.csv
 backend/__pycache__
+backend/tf/.deta
 backend/datathon-backend/__pycache__
 backend/datathon-backend/.ipynb_checkpoints
 backend/datathon-backend/.deta
