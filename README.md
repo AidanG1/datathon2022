@@ -37,6 +37,7 @@ For wind direction, we repurposed our already-written Markov chain to give a pre
 * Deta Deployment for Dashboard
 * Amazon Web Services Image for Model Training and Predictions
 * JupyterNotebooks for Data Exploration and Cleaning Methodology
+* Gets data live from buoys and makes new predictions
 
 
 ## Citations 🧑‍🏫
