@@ -3,8 +3,12 @@ from convert_to_df import convert_txt_to_df
 import financialanalysis as fa
 from matplotlib import pyplot as plt
 
-start_df = convert_txt_to_df("KMIS")
-features = start_df[["GSTD", "VIS"]]
+from lineartree import LinearTreeRegressor
+from sklearn.datasets import make_regression
+
+STATION = "KIKT"
+
+start_df = convert_txt_to_df(STATION)
 
 # start_df["datetime_str"] = start_df.apply(lambda row: row["#YY"] + row["MM"], axis=1)
 
@@ -15,13 +19,19 @@ model = LR()
 slope, intercept, x, fittedline = fa.timeseriesLinearRegression(start_df["DateTime"], start_df["WSPD"])
 
 
-# ## Make graph of the results
-# fig = plt.figure(figsize=(12, 7)) # make canvas of picture. figsize is optional
-# plt.plot(data["datetime"], data["relative_price_change_CTtoBS"], label="original") # draw line (label is optional)
-# plt.plot(data["datetime"], fittedline, label="prediction") # add one more line (label is optional)
-# plt.grid() # optional
-# plt.xlabel("Date") # optional
-# plt.ylabel("Price change from Jan 2020") # optional
-# plt.suptitle("Example of linear regression of timeseries data") # optional
-# plt.legend(loc="best") # optional
-# fig.savefig("example_linear_regression.png") # save as image
+## Make graph of the results
+fig = plt.figure(figsize=(12, 7)) # make canvas of picture
+plt.plot(start_df["DateTime"], start_df["WSPD"], label="original")
+plt.plot(start_df["DateTime"], fittedline, label="prediction")
+plt.grid()
+plt.xlabel("Date")
+plt.ylabel("WindSpeed")
+plt.suptitle("Timeseries of WSPD for Station " + STATION)
+plt.legend(loc="best")
+fig.savefig("simple_LR.png") # save as image
+
+x = start_df[["ATMP", "DEWP", "VIS", "GSTD", "TIME"]]
+y = start_df["WX"]
+
+regr = LinearTreeRegressor(base_estimator=model)
+regr.fit(x, y)

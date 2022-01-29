@@ -4,3 +4,5 @@ requests
 numpy
 pandas
 flask-cors
+matplotlib
+linear-tree
