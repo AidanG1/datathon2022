@@ -101,7 +101,7 @@ def create_markov(data: list, order: int):
 
 def predict(num_to_predict: int, last: list):
     predictions = []
-    for i in num_to_predict:
+    for i in range(num_to_predict):
         data = tuple(last)
         pred = weighted_choice(data, final_model)
         predictions.append(pred)

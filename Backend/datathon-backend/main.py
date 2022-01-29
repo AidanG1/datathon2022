@@ -50,7 +50,7 @@ def get_polar(station, date):
 @app.route('/pred/<station>', methods=['GET'])
 @cross_origin()
 def get_predictions(station):
-    df = convert_to_df.convert_txt_to_df(station)['wdir'][:-14].to_list()
+    df = convert_to_df.convert_txt_to_df(station)['WDIR'][:-14].to_list()
     data_list = markov.predict(72, df)
     return jsonify({'data': data_list})
 

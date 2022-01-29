@@ -12,8 +12,8 @@
 	let end_date = new Date();
 	const stations = ['KMIS', 'KBQX', 'PORO3', 'PEGF1', 'AAMC1', 'PXOC1', 'VTBT2'];
 	let station = 'KMIS';
-	let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-	let values = [18, 40, 30, 35, 8, 52, 17, -4];
+	let labels = ['Hi'];
+	let values = [34];
 	let data = {
 		labels: labels,
 		datasets: [
