@@ -29,9 +29,9 @@ Long Short Term Memory performed best.
 
 ## Live Hosting 💻
 
--Deta Deployment for Dashboard
--Amazon Web Services Image for Model Training and Predictions
--JupyterNotebooks for Data Exploration and Cleaning Methodology
+* Deta Deployment for Dashboard
+* Amazon Web Services Image for Model Training and Predictions
+* JupyterNotebooks for Data Exploration and Cleaning Methodology
 
 
 ## Citations 🧑‍🏫
