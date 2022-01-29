@@ -2,6 +2,7 @@
 	import Chart from 'svelte-frappe-charts';
 	import { DatePicker, Loading, TimePicker, Button, Label } from 'attractions';
 	import PolarChart from './PolarChart.svelte';
+	import WindPrediction from './WindPrediction.svelte'
 	let chartRef;
 	let json_data = [];
 	let full_labels = [];
@@ -115,6 +116,7 @@
 	</div>
 	<div class="Polar">
 		<PolarChart {station} polar_date={start_date} />
+		<WindPrediction {station} />
 	</div>
 </div>
 

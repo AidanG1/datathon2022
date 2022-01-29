@@ -103,7 +103,7 @@ def predict(num_to_predict: int, last: list):
     predictions = []
     for i in range(num_to_predict):
         data = tuple(last)
-        pred = weighted_choice(data, final_model)
+        pred = weighted_choice(data, final_model) * 45 + 22.5
         predictions.append(pred)
         last = last[1:]
         last.append(pred)

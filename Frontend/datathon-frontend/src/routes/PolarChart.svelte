@@ -48,8 +48,7 @@
 					theta.push(point['wdir']);
 					r.push(point['wspd']);
 				}
-                layout.title = `Wind Speed of ${station} on ${fmt_polar}`,
-				console.log(data);
+                layout.title = `Wind Speed of ${station} on ${fmt_polar}`
 				let Plot = new Plotly.newPlot(polarDiv, data, layout);
 				return json.data;
 			} else {
