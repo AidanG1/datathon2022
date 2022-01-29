@@ -10,7 +10,7 @@
 	let start_time = new Date();
 	let end_time = new Date();
 	let end_date = new Date();
-	const stations = ['KBQX', 'KMIS'];
+	const stations = ['KBQX', 'KMIS', 'PORO3', 'PEGF1', 'AAMC1', 'PXOC1'];
 	let station = 'KMIS';
 	let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 	let values = [18, 40, 30, 35, 8, 52, 17, -4];
