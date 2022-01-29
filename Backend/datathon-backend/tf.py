@@ -12,7 +12,7 @@ def get_data(station: str):
     #print(window.example[0].shape)
 
     headers = {"content-type": "application/json"}
-    json_response = requests.post('http://8750-35-222-127-158.ngrok.io/v1/models/lstm_model:predict', data=data, headers=headers)
+    json_response = requests.post('http://0fe4-35-245-242-154.ngrok.io/v1/models/lstm_model:predict', data=data, headers=headers)
     #print(json_response.text)
     thing = json.loads(json_response.text)["predictions"]
 
