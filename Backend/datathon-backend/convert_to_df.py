@@ -50,4 +50,6 @@ def pd_to_csv(station: str):
     convert_txt_to_df(station).to_csv(f'{station}.csv')
 
 # print(convert_txt_to_df('kbqx'))
-# pd_to_csv('kbqx')
+# stations = "kmis poro3 pegf1 aamc1 pxoc1 vtbt2".split(" ")
+# for s in stations:
+#     pd_to_csv(s)
