@@ -20,12 +20,17 @@ The datasets for each individual station presented themselves as text files on t
 
 ## Modeling 🏋️
 
-In order to arrive at the Long Short Term Memory model, we first needed to attempt other options.
+We split the wind speed and wind direction predictions into two separate models.
+
+For wind speed, in order to arrive at the Gated Recurrent Unit model, we first needed to attempt other options.
 1. Extreme Learning Machine initially seemed promising, but the methodology focuses primarily on classification.
 2. Markov Chains drew from our experience in COMP 140, yet only allowed for tracking one value across time, rather than incorporating other features.
 3. Simple Linear Regression across datetime provided a decent line of best fit, but could not account for the oscillating data pattern.
+4. Long Short-term Memory showed promise, but it had difficulty making any predictions besides the average.
 
-Long Short Term Memory performed best.
+Gated Recurrent Units performed best.
+
+For wind direction, we repurposed our already-written Markov chain to give a prediction of 8 possible directions.
 
 ## Live Hosting 💻
 
