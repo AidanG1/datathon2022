@@ -7,7 +7,7 @@
 1. [Objectives](README.md#objectives-)
 2. [Cleaning](README.md#cleaning-)
 3. [Modeling](README.md#modeling-%EF%B8%8F)
-4. [Techstack](README.md#techstack-)
+4. [Live Hosting](README.md#live-hosting-)
 5. [Citations](README.md#citations-)
 
 ## Objectives 🧠
@@ -27,9 +27,9 @@ In order to arrive at the Long Short Term Memory model, we first needed to attem
 
 Long Short Term Memory performed best.
 
-## Techstack 💻
+## Live Hosting 💻
 
--Deta Hosting for Dashboard
+-Deta Deployment for Dashboard
 -Amazon Web Services Image for Model Training and Predictions
 -JupyterNotebooks for Data Exploration and Cleaning Methodology
 
