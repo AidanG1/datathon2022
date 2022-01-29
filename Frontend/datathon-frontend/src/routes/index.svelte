@@ -1,6 +1,7 @@
 <script>
 	import Chart from 'svelte-frappe-charts';
 	import { DatePicker, Loading, TimePicker, Button, Label } from 'attractions';
+	import PolarChart from './PolarChart.svelte';
 	let chartRef;
 	let json_data = [];
 	let full_labels = [];
@@ -9,7 +10,7 @@
 	let start_time = new Date();
 	let end_time = new Date();
 	let end_date = new Date();
-	const stations = ['KBQX', 'KIKT', 'KMIS'];
+	const stations = ['KBQX', 'KMIS'];
 	let station = 'KBQX';
 	let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 	let values = [18, 40, 30, 35, 8, 52, 17, -4];
@@ -72,54 +73,73 @@
 	}
 </script>
 
-<header>
-	<img src="/logo.png" width="100" alt="Logo" />
-</header>
-<div class="controls">
-	<Label for="start_date">Start Date</Label>
-	<DatePicker format="%m/%d/%Y" closeOnSelection bind:value={start_date} id="start_date" />
-	<TimePicker hideNow bind:value={start_time} />
-	<Label for="end_date">End Date</Label>
-	<DatePicker format="%m/%d/%Y" closeOnSelection bind:value={end_date} id="end_date" />
-	<TimePicker hideNow bind:value={end_time} />
-	<Label for="station_input">Station</Label>
-	<div id="buttons">
-		{#each stations as button_station}
-			<Button
-				outline
-				on:click={() => {
-					station = button_station;
-				}}
-			>
-				{button_station}
-			</Button>
-		{/each}
-	</div>
-</div>
 <div class="container">
-	{#await fetch_data(`https://dtbe.deta.dev/s/${station}`)}
-		<h1>Loading <Loading /></h1>
-	{:then}
-		<Chart
-			{data}
-			type="line"
-			bind:this={chartRef}
-			title="Wind Speed"
-			axisOptions={{ xIsSeries: true }}
-		/>
-	{/await}
+	<div class="Chart">
+		{#await fetch_data(`https://dtbe.deta.dev/s/${station}`)}
+			<h1>Loading <Loading /></h1>
+		{:then}
+			<Chart
+				{data}
+				type="line"
+				bind:this={chartRef}
+				title="Wind Speed"
+				axisOptions={{ xIsSeries: true }}
+			/>
+		{/await}
+	</div>
+	<div class="Controls">
+		<img src="/logo.png" width="100" alt="Logo" />
+		<div>
+			<Label for="start_date">Start Date</Label>
+			<DatePicker format="%m/%d/%Y" closeOnSelection bind:value={start_date} id="start_date" />
+			<TimePicker hideNow bind:value={start_time} />
+		</div>
+		<div>
+			<Label for="end_date">End Date</Label>
+			<DatePicker format="%m/%d/%Y" closeOnSelection bind:value={end_date} id="end_date" />
+			<TimePicker hideNow bind:value={end_time} />
+		</div>
+		<Label for="station_input">Station</Label>
+		<div id="buttons">
+			{#each stations as button_station}
+				<Button
+					outline
+					on:click={() => {
+						station = button_station;
+					}}
+				>
+					{button_station}
+				</Button>
+			{/each}
+		</div>
+	</div>
+	<div class="Polar">
+		<PolarChart {station} polar_date={start_date} />
+	</div>
 </div>
 
 <style>
+	.container {
+		display: grid;
+		grid-template-columns: 0.1fr 1.9fr 1fr;
+		grid-template-rows: 1fr 1.9fr 0.1fr;
+		gap: 0px 0px;
+		grid-template-areas:
+			'. Controls Polar'
+			'. Chart Chart'
+			'. . .';
+	}
+	.Chart {
+		width: 100%;
+		grid-area: Chart;
+	}
+	.Controls {
+		grid-area: Controls;
+	}
+	.Polar {
+		grid-area: Polar;
+	}
 	img {
-		display: inline-block;
-	}
-
-	:global(button) {
-		display: inline-block;
-	}
-
-	:global(input) {
 		display: inline-block;
 	}
 </style>

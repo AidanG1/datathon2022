@@ -1,3 +1,4 @@
+from posixpath import split
 from flask import Flask, request, jsonify
 import convert_to_df
 # import mlr2
@@ -23,6 +24,26 @@ def get_wspd_by_station(station):
     data_list = []
     for index, row in tswspd.iterrows():
         data_list.append({'datetime': row['DateTime'], 'wspd': row['WSPD']})
+    data_dict = {'data': data_list}
+    # print(data_dict)
+    return jsonify(data_dict)
+
+
+@app.route('/p/<station>/<date>', methods=['GET'])
+@cross_origin()
+def get_polar(station, date):
+    df = convert_to_df.convert_txt_to_df(station)
+    df = df.set_index('DateTime')
+    split_date = split(date, '-')
+    start_date = datetime.datetime(
+        year=split_date[0], month=split_date[1]+1, day=split_date[2], hour=0)
+    end_date = datetime.datetime(
+        year=split_date[0], month=split_date[1]+1, day=split_date[2], hour=23)
+    df = df.loc[start_date:end_date]
+    data_list = []
+    for index, row in df.iterrows():
+        data_list.append(
+            {'datetime': row['DateTime'], 'wspd': row['WSPD'], 'wdir': row['WDIR']})
     data_dict = {'data': data_list}
     # print(data_dict)
     return jsonify(data_dict)
