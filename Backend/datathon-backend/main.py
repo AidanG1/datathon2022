@@ -34,12 +34,13 @@ def get_wspd_by_station(station):
 def get_polar(station, date):
     df = convert_to_df.convert_txt_to_df(station)
     df = df.set_index('DateTime')
-    split_date = split(date, '-')
+    split_date = date.split('-')
     start_date = datetime.datetime(
-        year=split_date[0], month=split_date[1]+1, day=split_date[2], hour=0)
+        int(split_date[0]), int(split_date[1])+1, int(split_date[2]), 0)
     end_date = datetime.datetime(
-        year=split_date[0], month=split_date[1]+1, day=split_date[2], hour=23)
+        int(split_date[0]), int(split_date[1])+1, int(split_date[2]), 23)
     df = df.loc[start_date:end_date]
+    df = df.reset_index()
     data_list = []
     for index, row in df.iterrows():
         data_list.append(

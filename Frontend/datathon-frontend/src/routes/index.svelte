@@ -11,7 +11,7 @@
 	let end_time = new Date();
 	let end_date = new Date();
 	const stations = ['KBQX', 'KMIS'];
-	let station = 'KBQX';
+	let station = 'KMIS';
 	let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 	let values = [18, 40, 30, 35, 8, 52, 17, -4];
 	let data = {
@@ -99,7 +99,7 @@
 			<DatePicker format="%m/%d/%Y" closeOnSelection bind:value={end_date} id="end_date" />
 			<TimePicker hideNow bind:value={end_time} />
 		</div>
-		<Label for="station_input">Station</Label>
+		<Label for="station_input">Station: {station}</Label>
 		<div id="buttons">
 			{#each stations as button_station}
 				<Button

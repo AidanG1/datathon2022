@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	export let station, polar_date;
 	let theta = [];
+	let error = '';
 	var data = [
 		{
 			type: 'scatterpolar',
@@ -41,16 +42,17 @@
 			if (response.ok) {
 				let json = await response.json();
 				for (let point of json.data) {
-					theta.push(point['WSPD']);
+					theta.push(point['wspd']);
 				}
 				let polarDiv = document.getElementById('polarDiv');
+                console.log(data)
 				let Plot = new Plotly.newPlot(polarDiv, data, layout);
 				return json.data;
 			} else {
-				alert('HTTP-Error: ' + response.status);
+				error = 'No data for wind direction';
 			}
 		}
-        fetch_data()
+		fetch_data();
 	});
 </script>
 
@@ -59,4 +61,8 @@
 </svelte:head>
 
 <h3>Polar Chart</h3>
-<div id="polarDiv" />
+{#if error === ''}
+	<div id="polarDiv" />
+{:else}
+	<h4>{error}</h4>
+{/if}
