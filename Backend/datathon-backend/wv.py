@@ -23,6 +23,7 @@ def lstm_clean(df):
     df["WDIR"].interpolate(inplace=True);
     df["DEWP"].interpolate(inplace=True);
     df["ATMP"].interpolate(inplace=True);
+    df["PRES"].interpolate(inplace=True);
 
     df["VIS"].interpolate(inplace=True);
 
