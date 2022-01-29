@@ -1,5 +1,0 @@
-deta
-flask
-requests
-numpy
-pandas

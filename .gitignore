@@ -1,1 +1,11 @@
-Backend/*.csv
+backend/*.csv
+backend/datathon-backend/.deta
+backend/datathon-backend/.env
+frontend/datathon-frontend/.DS_Store
+frontend/datathon-frontend/node_modules
+frontend/datathon-frontend/build
+frontend/datathon-frontend/.svelte-kit
+frontend/datathon-frontend//package
+frontend/datathon-frontend/.env
+frontend/datathon-frontend/.env.*
+frontend/datathon-frontend/!.env.example
