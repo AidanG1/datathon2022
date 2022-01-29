@@ -76,7 +76,7 @@
 		}
 	}
 </script>
-
+<img src="/logoslogan.png">
 {#await fetch_data(`https://dtbe.deta.dev/s/${station}`)}
 	<h1>Loading <Loading /></h1>
 {:then}
