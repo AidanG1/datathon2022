@@ -16,6 +16,6 @@ def convert_txt_to_pd(station: str):
         for line in lines:
             data.write(str(line.split()))
         data.close()
-    return lines
+    return pd.DataFrame(lines)
 
 print(convert_txt_to_pd('KBQX'))
