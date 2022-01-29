@@ -1,3 +1,4 @@
+from email import header
 import requests
 import pandas as pd
 import numpy as np
@@ -12,9 +13,12 @@ def convert_txt_to_df(station: str):
     second_split_lines = []
     for line in lines:
         second_split_lines.append(line.split())
-    return pd.DataFrame(second_split_lines)
+    df = pd.DataFrame(second_split_lines)
+    df = df.rename(columns=df.iloc[0])
+    df = df.drop([1, 0])
+    return df
 
 def pd_to_csv(station: str):
     convert_txt_to_df(station).to_csv(f'{station}.csv')
 
-# print(convert_txt_to_df('KBQX'))
+pd_to_csv('kbqx')
