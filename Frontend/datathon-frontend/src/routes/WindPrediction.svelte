@@ -52,7 +52,7 @@
 		{#await fetch_data(`https://dtbe.deta.dev/pred/${station}`)}
 			<h1>Loading <Loading /></h1>
 		{:then}
-			<Chart {data} type="line" bind:this={chartRef} title="Wind Direction Prediction"
+			<Chart {data} type="line" bind:this={chartRef} title="Wind Direction Prediction Using Markov Chains"
 			axisOptions={{ xIsSeries: true }} />
 		{/await}
 	</div>

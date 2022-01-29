@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import convert_to_df
 import datetime
+import random
 import tf, markov
 from deta import Deta
 import numpy as np
@@ -58,6 +59,7 @@ def get_predictions(station):
 @cross_origin()
 def get_speed_predictions(station):
     data = tf.get_data(station)
+
     return jsonify({'data': data})
 
 

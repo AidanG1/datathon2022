@@ -75,9 +75,23 @@
 	}
 </script>
 
+<div id="content">
+	<a href="https://github.com/AidanG1/datathon2022" target="_blank">
+		<img
+			src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+			width="50"
+			alt="Github logo"
+			height="50"
+		/>
+	</a>
+</div>
 <div class="grid">
 	<div>
-		<img src="/logo.png" width="100" alt="Logo" />
+		<div>
+			<img src="/logo.png" width="100" alt="Logo" />
+			<h1>Breezee</h1>
+			<h2>Any way the wind blows</h2>
+		</div>
 		<div>
 			<Label for="start_date">Start Date</Label>
 			<DatePicker format="%m/%d/%Y" closeOnSelection bind:value={start_date} id="start_date" />
@@ -103,8 +117,12 @@
 		</div>
 	</div>
 	<div class="span-col-3">
-		<PolarChart {station} polar_date={start_date} />
-		<WindPrediction {station} />
+		<div>
+			<PolarChart {station} polar_date={start_date} />
+		</div>
+		<div class="span-col-2">
+			<WindPrediction {station} />
+		</div>
 	</div>
 	<div class="span-col-4">
 		{#await fetch_data(`https://dtbe.deta.dev/s/${station}`)}
@@ -123,6 +141,11 @@
 </div>
 
 <style>
+	#content {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+	}
 	.grid {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
@@ -143,7 +166,6 @@
 		display: inline-block;
 	}
 	:global(body) {
-		background-color: rgb(238, 237, 180);
-		background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpaperaccess.com%2Fwhite-light&psig=AOvVaw38qXHOzh5iaI5dTl6JJggt&ust=1643578529901000&source=images&cd=vfe&ved=0CAgQjRxqFwoTCIiQ86X11_UCFQAAAAAdAAAAABAJ');
+		background-color: beige;
 	}
 </style>

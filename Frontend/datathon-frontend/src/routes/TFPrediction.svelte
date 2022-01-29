@@ -52,7 +52,7 @@
 		{#await fetch_data(`https://dtbe.deta.dev/tf/${station}`)}
 			<h1>Loading <Loading /></h1>
 		{:then}
-			<Chart {data} type="line" bind:this={chartRef} title="Wind Speed Prediction"
+			<Chart {data} type="line" bind:this={chartRef} title="Wind Speed Prediction Using Tensorflow GRU"
 			axisOptions={{ xIsSeries: true }} />
 		{/await}
 	</div>
