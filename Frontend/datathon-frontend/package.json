@@ -18,7 +18,6 @@
   },
   "type": "module",
   "dependencies": {
-    "fusioncharts": "^3.18.0",
-    "svelte-fusioncharts": "^1.0.0"
+    "svelte-frappe-charts": "^1.9.1"
   }
 }
