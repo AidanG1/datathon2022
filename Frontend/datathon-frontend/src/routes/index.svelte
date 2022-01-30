@@ -136,7 +136,7 @@
 				axisOptions={{ xIsSeries: true }}
 			/>
 		{/await}
-		<TFPrediction {station} />
+		<!-- <TFPrediction {station} /> -->
 	</div>
 </div>
 
